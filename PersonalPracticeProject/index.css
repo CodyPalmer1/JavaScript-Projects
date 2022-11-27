@@ -28,7 +28,7 @@ form{
 }
 
 body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, #ee7752, #e1739d, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
@@ -64,4 +64,16 @@ input{
 
 img{
     width: 140px
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px 17px;
+    border: none;
+    background-color: rgba(220, 21, 103, 0.99);
+    color: #ecfeff;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
