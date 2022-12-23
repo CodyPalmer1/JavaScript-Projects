@@ -13,14 +13,17 @@ function getEmotionsArray(cats){
     const emotionsArray = []
     for (let cat of cats){
         for (let emotion of cat.emotionTags){
+<<<<<<< HEAD
             if (!emotionsArray.includes(emotion)){
                 emotionsArray.push(emotion)
             }
+=======
+            emotionsArray.push(emotion)
+>>>>>>> ad86f90ab27772d278b09f0f80244660ffa6d039
         }
     }
     return emotionsArray
 }
-
 
 function renderEmotionsRadios(cats){
 
@@ -40,7 +43,6 @@ function renderEmotionsRadios(cats){
     }
     emotionRadios.innerHTML = radioItems
 }
-
 renderEmotionsRadios(catsData)
 
 
