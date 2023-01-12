@@ -10,7 +10,11 @@ h1, h2, h3{
 }
 
 h1, h2{
+<<<<<<< HEAD
     color: #223d81;
+=======
+    color: #EED6D3;
+>>>>>>> 94be6933ae82016b5963206e03ff1f22796045ee
     margin: 0;
 }
 
@@ -29,7 +33,11 @@ h3{
 /* layout */
 
 header{
+<<<<<<< HEAD
     background-color: #6ca0fb;
+=======
+    background-color: #67595E;
+>>>>>>> 94be6933ae82016b5963206e03ff1f22796045ee
 }
 
 .header-inner{
@@ -41,7 +49,11 @@ header{
     padding: 10px 0 0 0;
 }
 
+<<<<<<< HEAD
 .palmer-img{
+=======
+.pumpkin-img{
+>>>>>>> 94be6933ae82016b5963206e03ff1f22796045ee
     width: 80px;
 }
 
@@ -102,8 +114,13 @@ input[type="radio"]{
 }
 
 .get-image-btn{
+<<<<<<< HEAD
     background-color: #6ca0fb;
     color: #223d81;
+=======
+    background-color: #67595e;
+    color: #eed6d3;
+>>>>>>> 94be6933ae82016b5963206e03ff1f22796045ee
     padding: 15px 19px;
     font-size: 24px;
     border: none;
