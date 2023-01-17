@@ -10,7 +10,11 @@ function getEmotionsArray(cats){
     const emotionsArray = []
     for (let cat of cats){
         for (let emotion of cat.emotionTags){
+<<<<<<< HEAD
             if (!emotionsArray.includes(emotion)){
+=======
+            if(!emotionsArray.includes(emotionsArray)){
+>>>>>>> 4daa6347593a7d26d40bd6f15c8c6ac6a7ae17d2
                 emotionsArray.push(emotion)
             }
         }
