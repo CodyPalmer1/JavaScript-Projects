@@ -10,7 +10,7 @@ h1, h2, h3{
 }
 
 h1, h2{
-    color: #324a75;
+    color: #3b578a;
     margin: 0;
 }
 
@@ -29,7 +29,7 @@ h3{
 /* layout */
 
 header{
-    background-color: #6ca0fb;
+    background-color: #72a1f5;
 }
 
 .header-inner{
@@ -42,14 +42,14 @@ header{
 }
 
 .pumpkin-img{
-    width: 80px;
+    width: 90px;
 }
 
 .controls-container{
     display: flex;
     flex-direction: column;
     width: 200px;
-    margin: 0px auto;
+    margin: 0 auto;
 }
 
 /* controls */
