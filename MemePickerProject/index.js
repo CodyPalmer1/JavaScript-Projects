@@ -16,17 +16,20 @@ function highlightCheckedOption(e){
     document.getElementById(e.target.id).parentElement.classList.add('highlight')
 }
 
-
 function getMatchingCatsArray(){
     if(document.querySelector('input[type="radio"]:checked')){
         const selectedEmotion = document.querySelector('input[type="radio"]:checked').value
         const isGif = gifsOnlyOption.checked
 
         const matchingCatsArray = catsData.filter(function(cat){
-            return cat.emotionTags.includes(selectedEmotion)
+            if(isGif){
+                return cat.emotionTags.includes(selectedEmotion) && cat.isGif
+            }
+            else{
+                return cat.emotionTags.includes(selectedEmotion)
+            }
         })
-
-        console.log(matchingCatsArray)
+        return matchingCatsArray
     }
 }
 
