@@ -1,32 +1,38 @@
-const startButton = document.getElementById("startButton");
-const firstModal = document.getElementById("firstModal");
-const secondModal = document.getElementById("secondModal");
-const errorMessage = document.getElementById("errorMessage");
-const yesButton = document.getElementById("yesButton");
-const noButton = document.getElementById("noButton");
-const yesButton2 = document.getElementById("yesButton2");
-const noButton2 = document.getElementById("noButton2");
+const getElementById = (id) => document.getElementById(id);
 
-startButton.addEventListener("click", function() {
-    firstModal.style.display = "block";
+const addEventListener = (id, event, callback) => getElementById(id).addEventListener(event, callback);
+
+const showElement = (id) => getElementById(id).style.display = "block";
+
+const hideElement = (id) => getElementById(id).style.display = "none";
+
+const startButtonId = "startButton";
+const firstModalId = "firstModal";
+const secondModalId = "secondModal";
+const errorMessageId = "errorMessage";
+const yesButtonId = "yesButton";
+const noButtonId = "noButton";
+const yesButton2Id = "yesButton2";
+const noButton2Id = "noButton2";
+
+addEventListener(startButtonId, "click", () => showElement(firstModalId));
+
+addEventListener(yesButtonId, "click", () => {
+    hideElement(firstModalId);
+    showElement(secondModalId);
 });
 
-yesButton.addEventListener("click", function() {
-    firstModal.style.display = "none";
-    secondModal.style.display = "block";
+addEventListener(noButtonId, "click", () => {
+    hideElement(firstModalId);
+    showElement(errorMessageId);
 });
 
-noButton.addEventListener("click", function() {
-    firstModal.style.display = "none";
-    errorMessage.style.display = "block";
+addEventListener(yesButton2Id, "click", () => {
+    hideElement(secondModalId);
+    showElement(firstModalId);
 });
 
-yesButton2.addEventListener("click", function() {
-    secondModal.style.display = "none";
-    firstModal.style.display = "block";
-});
-
-noButton2.addEventListener("click", function() {
-    secondModal.style.display = "none";
-    errorMessage.style.display = "block";
+addEventListener(noButton2Id, "click", () => {
+    hideElement(secondModalId);
+    showElement(errorMessageId);
 });
