@@ -6,13 +6,13 @@ export const catsData = [
         alt: "Moody picture",
     },
     {
-        emotionTags: ["confused", "sad"],
+        emotionTags: ["confused"],
         isGif: false,
         image: "confused.jpeg",
         alt: "confused",
     },
     {
-        emotionTags: ["happy", "relaxed"],
+        emotionTags: ["happy"],
         isGif: false,
         image: "happy.jpeg",
         alt: "happy",
@@ -42,7 +42,7 @@ export const catsData = [
         alt: "nervous",
     },
     {
-        emotionTags: ["sad", "moody"],
+        emotionTags: ["sad"],
         isGif: false,
         image: "sad1.jpeg",
         alt: "sad",
