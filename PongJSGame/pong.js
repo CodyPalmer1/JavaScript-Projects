@@ -38,7 +38,7 @@ resetButton.addEventListener('click', resetGame);
 function gameStart(){
     createBall()
     nextTick()
-};
+}
 function nextTick(){
     intervalId = setTimeout(() => {
         clearBoard();
@@ -48,11 +48,11 @@ function nextTick(){
         checkCollision();
         nextTick();
     }, 10)
-};
+}
 function clearBoard(){
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
-};
+}
 function drawPaddles(){
     ctx.strokeStyle = paddleBorder;
 
@@ -63,7 +63,7 @@ function drawPaddles(){
     ctx.fillStyle = paddle2Color;
     ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
     ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
-};
+}
 function createBall(){
     ballSpeed = 1;
     if(Math.round(Math.random()) === 1){
@@ -79,11 +79,11 @@ function createBall(){
     ballX = gameWidth / 2;
     ballY = gameHeight / 2;
     drawBall(ballX, ballY);
-};
+}
 function moveBall(){
     ballX += ballSpeed * ballXDirection;
     ballY += ballSpeed * ballYDirection;
-};
+}
 function drawBall(ballX, ballY){
     ctx.fillStyle = ballColor;
     ctx.strokeStyle = BallBorderColor;
@@ -93,7 +93,7 @@ function drawBall(ballX, ballY){
     ctx.stroke();
     ctx.fill();
 
-};
+}
 function checkCollision(){
     if(ballY <= ballRadius){
         ballYDirection *= -1;
@@ -127,7 +127,7 @@ function checkCollision(){
             ballSpeed += 1;
         }
     }
-};
+}
 function changeDirection(){
     const keyPressed = event.keycode;
     const paddle1Up = 87;
@@ -157,10 +157,10 @@ function changeDirection(){
             }
             break;
     }
-};
+}
 function updateScore(){
     scoreText.textContent = `${player1Score} : ${player2Score}`;
-};
+}
 function resetGame(){
     player1Score = 0;
     player2Score = 0;
@@ -184,4 +184,4 @@ function resetGame(){
     updateScore();
     clearInterval(intervalId);
     gameStart();
-};
+}
