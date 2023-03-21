@@ -41,7 +41,7 @@ gameStart();
 function gameStart(){
     createBall();
     nextTick();
-};
+}
 function nextTick(){
     intervalID = setTimeout(() => {
         clearBoard();
@@ -51,11 +51,11 @@ function nextTick(){
         checkCollision();
         nextTick();
     }, 10)
-};
+}
 function clearBoard(){
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
-};
+}
 function drawPaddles(){
     ctx.strokeStyle = paddleBorder;
 
@@ -66,17 +66,17 @@ function drawPaddles(){
     ctx.fillStyle = paddle2Color;
     ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
     ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
-};
+}
 function createBall(){
     ballSpeed = 1;
-    if(Math.round(Math.random()) == 1){
+    if(Math.round(Math.random()) === 1){
         ballXDirection =  1;
     }
     else{
         ballXDirection = -1;
     }
-    if(Math.round(Math.random()) == 1){
-        ballYDirection = Math.random() * 1; //more random directions
+    if(Math.round(Math.random()) === 1){
+        ballYDirection = Math.random(); //more random directions
     }
     else{
         ballYDirection = Math.random() * -1; //more random directions
@@ -84,11 +84,11 @@ function createBall(){
     ballX = gameWidth / 2;
     ballY = gameHeight / 2;
     drawBall(ballX, ballY);
-};
+}
 function moveBall(){
     ballX += (ballSpeed * ballXDirection);
     ballY += (ballSpeed * ballYDirection);
-};
+}
 function drawBall(ballX, ballY){
     ctx.fillStyle = ballColor;
     ctx.strokeStyle = ballBorderColor;
@@ -99,7 +99,7 @@ function drawBall(ballX, ballY){
     ctx.fill();
 };
 function checkCollision(){
-    if(ballY <= 0 + ballRadius){
+    if(ballY <= ballRadius){
         ballYDirection *= -1;
     }
     if(ballY >= gameHeight - ballRadius){
@@ -131,7 +131,7 @@ function checkCollision(){
             ballSpeed += 1;
         }
     }
-};
+}
 function changeDirection(event){
     const keyPressed = event.keyCode;
     const paddle1Up = 87;
@@ -161,10 +161,10 @@ function changeDirection(event){
             }
             break;
     }
-};
+}
 function updateScore(){
     scoreText.textContent = `${player1Score} : ${player2Score}`;
-};
+}
 function resetGame(){
     player1Score = 0;
     player2Score = 0;
@@ -188,4 +188,4 @@ function resetGame(){
     updateScore();
     clearInterval(intervalID);
     gameStart();
-};
+}
