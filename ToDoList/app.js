@@ -13,3 +13,19 @@ form.addEventListener('submit', (event) => {
     }
 });
 
+function renderList() {
+    list.innerHTML = '';
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const listItem = document.createElement('li');
+        listItem.textContent = item.text;
+        if (item.completed) {
+            listItem.classList.add('completed');
+        }
+        listItem.addEventListener('click', () => {
+            item.completed = !item.completed;
+            renderList();
+        });
+        list.appendChild(listItem);
+    }
+}
