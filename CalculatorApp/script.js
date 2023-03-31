@@ -1,4 +1,4 @@
-let result = document.getElementById('result');
+const result = document.getElementById('result');
 
 function addInput(val) {
     result.value += val;
@@ -9,6 +9,15 @@ function clearResult() {
 }
 
 function getResult() {
-    let input = result.value;
-    result.value = eval(input);
+    try {
+        let input = result.value;
+        let output = eval(input);
+        if (!Number.isFinite(output)) {
+            throw new Error('Invalid input');
+        }
+        result.value = output;
+    } catch (error) {
+        result.value = 'Error';
+        console.error(error);
+    }
 }
