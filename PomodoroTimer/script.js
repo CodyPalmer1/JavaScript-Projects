@@ -3,52 +3,47 @@ const startStopBtn = document.querySelector('#start_stop');
 const resetBtn = document.querySelector('#reset');
 const timerLabel = document.querySelector('#timer-label');
 
-let timeLeft, timerInterval, isPaused, isSession;
+let timeLeft = 25 * 60;
+let timerInterval;
+let isPaused = true;
+let isSession = true;
 
-// set initial time to 25 minutes
-timeLeft = 25 * 60;
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    return `${minutes < 10 ? '0' : ''}${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+}
 
-// set the timer label to "Session"
-timerLabel.textContent = 'Session';
+function updateTimer() {
+    timeLeft--;
+    timerDisplay.textContent = formatTime(timeLeft);
+
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+
+        if (isSession) {
+            timeLeft = 5 * 60;
+            timerLabel.textContent = 'Break';
+        } else {
+            timeLeft = 25 * 60;
+            timerLabel.textContent = 'Session';
+        }
+
+        isSession = !isSession;
+        startTimer();
+    }
+}
 
 function startTimer() {
-    // if the timer is running, pause it
-    if (isPaused === false) {
-        clearInterval(timerInterval);
+    if (isPaused) {
+        isPaused = false;
+        startStopBtn.textContent = 'Pause';
+        timerInterval = setInterval(updateTimer, 1000);
+    } else {
         isPaused = true;
         startStopBtn.textContent = 'Start';
-        return;
+        clearInterval(timerInterval);
     }
-
-    // otherwise, start the timer
-    isPaused = false;
-    startStopBtn.textContent = 'Pause';
-
-    timerInterval = setInterval(() => {
-        timeLeft--;
-
-        // update the display with the remaining time
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-        timerDisplay.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-        // if the timer has run out, switch to the next mode
-        if (timeLeft === 0) {
-            clearInterval(timerInterval);
-
-            if (isSession === true) {
-                isSession = false;
-                timeLeft = 5 * 60;
-                timerLabel.textContent = 'Break';
-            } else {
-                isSession = true;
-                timeLeft = 25 * 60;
-                timerLabel.textContent = 'Session';
-            }
-
-            startTimer();
-        }
-    }, 1000);
 }
 
 function resetTimer() {
@@ -58,7 +53,7 @@ function resetTimer() {
     isSession = true;
     timeLeft = 25 * 60;
     timerLabel.textContent = 'Session';
-    timerDisplay.textContent = '25:00';
+    timerDisplay.textContent = formatTime(timeLeft);
 }
 
 startStopBtn.addEventListener('click', startTimer);
