@@ -3,23 +3,43 @@ body {
     font-family: sans-serif;
 }
 
-.timer {
-    text-align: center;
-    margin-top: 10%;
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-p {
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f3e7e7;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#timer-label {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#time-left {
     font-size: 5rem;
-    margin-top: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
 }
 
 button {
-    background-color: #0077cc;
+    background-color: #b1d1e0;
     color: #fff;
     border: none;
     padding: 1rem;
@@ -27,12 +47,13 @@ button {
     border-radius: 5px;
     font-size: 1.5rem;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #005fa3;
+    background-color: #92bfcf;
 }
 
 button:active {
-    background-color: #004b80;
+    background-color: #77a8be;
 }

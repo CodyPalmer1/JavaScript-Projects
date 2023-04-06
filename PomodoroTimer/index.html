@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Pomodoro Timer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="timer">
-    <h1 id="timer-label">Session</h1>
-    <p id="time-left">25:00</p>
-    <button id="start_stop">Start</button>
-    <button id="reset">Reset</button>
+<div class="container">
+    <h1>Pomodoro Timer</h1>
+    <div class="timer">
+        <h2 id="timer-label">Session</h2>
+        <p id="time-left" aria-live="polite" aria-atomic="true">25:00</p>
+        <button id="start_stop">Start</button>
+        <button id="reset">Reset</button>
+    </div>
 </div>
 <script src="script.js"></script>
 </body>
