@@ -1,37 +1,51 @@
-let income = [];
-let expenses = [];
-const incomeTable = document.getElementById('income-table').getElementsByTagName('tbody')[0];
-const expenseTable = document.getElementById('expense-table').getElementsByTagName('tbody')[0];
-const balanceAmount = document.getElementById('balance-amount');
+const income = [];
+const expenses = [];
+const incomeTable = document.querySelector('#income-table tbody');
+const expenseTable = document.querySelector('#expense-table tbody');
+const balanceAmount = document.querySelector('#balance-amount');
+const incomeForm = document.getElementById('income-form');
+const incomeDescription = incomeForm.elements['income-description'];
+const incomeAmount = incomeForm.elements['income-amount'];
+const expenseForm = document.getElementById('expense-form');
+const expenseDescription = expenseForm.elements['expense-description'];
+const expenseAmount = expenseForm.elements['expense-amount'];
 
-function addIncome(description, amount) {
-    income.push({ description, amount });
-    displayData();
+function addIncome() {
+    const description = incomeDescription.value.trim();
+    const amount = parseFloat(incomeAmount.value.trim());
+    if (description && amount) {
+        income.push({ description, amount });
+        displayData();
+        incomeForm.reset();
+        saveData();
+    }
 }
 
-function addExpense(description, amount) {
-    expenses.push({ description, amount });
-    displayData();
+function addExpense() {
+    const description = expenseDescription.value.trim();
+    const amount = parseFloat(expenseAmount.value.trim());
+    if (description && amount) {
+        expenses.push({ description, amount });
+        displayData();
+        expenseForm.reset();
+        saveData();
+    }
 }
 
 function displayData() {
     clearTable(incomeTable);
     clearTable(expenseTable);
-    income.forEach(item => {
-        addItemToTable(item, incomeTable);
-    });
-    expenses.forEach(item => {
-        addItemToTable(item, expenseTable);
-    });
+    income.map(item => addItemToTable(item, incomeTable));
+    expenses.map(item => addItemToTable(item, expenseTable));
     calculateBalance();
 }
 
-function addItemToTable(item, table) {
+function addItemToTable({ description, amount }, table) {
     const row = table.insertRow();
     const descriptionCell = row.insertCell();
     const amountCell = row.insertCell();
-    descriptionCell.textContent = item.description;
-    amountCell.textContent = `$${item.amount.toFixed(2)}`;
+    descriptionCell.textContent = description;
+    amountCell.textContent = `$${amount.toFixed(2)}`;
 }
 
 function clearTable(table) {
@@ -41,8 +55,8 @@ function clearTable(table) {
 }
 
 function calculateBalance() {
-    const incomeTotal = income.reduce((total, item) => total + item.amount, 0);
-    const expenseTotal = expenses.reduce((total, item) => total + item.amount, 0);
+    const incomeTotal = income.reduce((total, { amount }) => total + amount, 0);
+    const expenseTotal = expenses.reduce((total, { amount }) => total + amount, 0);
     const balance = incomeTotal - expenseTotal;
     balanceAmount.textContent = `$${balance.toFixed(2)}`;
 }
@@ -53,31 +67,19 @@ function saveData() {
 }
 
 function loadData() {
-    income = JSON.parse(localStorage.getItem('income')) || [];
-    expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    income.push(...JSON.parse(localStorage.getItem('income')) || []);
+    expenses.push(...JSON.parse(localStorage.getItem('expenses')) || []);
     displayData();
 }
 
-document.getElementById('income-form').addEventListener('submit', event => {
+incomeForm.addEventListener('submit', event => {
     event.preventDefault();
-    const description = event.target.elements['income-description'].value.trim();
-    const amount = parseFloat(event.target.elements['income-amount'].value.trim());
-    if (description && amount) {
-        addIncome(description, amount);
-        event.target.reset();
-        saveData();
-    }
+    addIncome();
 });
 
-document.getElementById('expense-form').addEventListener('submit', event => {
+expenseForm.addEventListener('submit', event => {
     event.preventDefault();
-    const description = event.target.elements['expense-description'].value.trim();
-    const amount = parseFloat(event.target.elements['expense-amount'].value.trim());
-    if (description && amount) {
-        addExpense(description, amount);
-        event.target.reset();
-        saveData();
-    }
+    addExpense();
 });
 
 window.addEventListener('load', loadData);
