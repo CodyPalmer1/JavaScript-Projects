@@ -1,6 +1,8 @@
-var gameBoard = document.getElementById("gameBoard");
-var ctx = gameBoard.getContext("2d");
+// Get the canvas and context
+var canvas = document.getElementById("gameBoard");
+var ctx = canvas.getContext("2d");
 
+// Create the ball and paddles
 var ball = {
     x: 300,
     y: 200,
@@ -18,18 +20,24 @@ var paddle2 = {
     y: 200
 };
 
+// Create the scores
 var score1 = 0;
 var score2 = 0;
 
+// Draw the game
 function draw() {
-    ctx.clearRect(0, 0, gameBoard.width, gameBoard.height);
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw the background
     ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, gameBoard.width, gameBoard.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // Draw the ball
     ctx.fillStyle = "white";
     ctx.fillRect(ball.x, ball.y, 20, 20);
 
+    // Draw the paddles
     ctx.fillStyle = "red";
     ctx.fillRect(paddle1.x, paddle1.y, 100, 20);
 
@@ -37,11 +45,11 @@ function draw() {
     ctx.fillRect(paddle2.x, paddle2.y, 100, 20);
 
     // Check for collisions with the walls
-    if (ball.x < 0 || ball.x > gameBoard.width) {
+    if (ball.x < 0 || ball.x > canvas.width) {
         ball.dx *= -1;
     }
 
-    if (ball.y < 0 || ball.y > gameBoard.height) {
+    if (ball.y < 0 || ball.y > canvas.height) {
         ball.dy *= -1;
     }
 
@@ -63,7 +71,7 @@ function draw() {
         score2++;
         ball.x = 300;
         ball.y = 200;
-    } else if (ball.x > gameBoard.width) {
+    } else if (ball.x > canvas.width) {
         score1++;
         ball.x = 300;
         ball.y = 200;
@@ -73,4 +81,5 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
+// Start the game
 window.addEventListener("load", draw);
