@@ -40,10 +40,14 @@ function exploreHall() {
         heading: 'Exploring the Hall',
         text: 'You decide to explore the hall. It winds and turns, with many left and right options. After walking for what feels like an eternity, you find yourself back in the room where you started. What do you do now?',
         option1: 'Explore the hall again',
-        option2: 'Try to escape through the window',
+        option2: 'Try to find clues or a way to get out of the room other than the hall.',
         reset: false
     };
     displayGameContent();
+
+    function exploreHallAgain() {
+
+    }
 
     document.addEventListener('keydown', function(event) {
         if (event.key === '1' && !document.getElementById('option1').disabled) {
