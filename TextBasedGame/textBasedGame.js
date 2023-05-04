@@ -1,85 +1,129 @@
-let gameContent = '';
+function exploreHallAgain() {
+    const attempts = gameContent.attempts ? gameContent.attempts + 1 : 1;
+    let text;
+    let option1;
+    let option2;
+    let option3;
+    let option4;
+    let reset = false;
 
-function displayGameContent() {
-    const gameContainer = document.getElementById('game-container');
-    const [heading, paragraph, option1Btn, option2Btn, resetBtn] = gameContainer.children;
-    heading.innerText = gameContent.heading;
-    paragraph.innerText = gameContent.text;
-    option1Btn.innerText = gameContent.option1;
-    option1Btn.disabled = gameContent.option1 === '';
-    option2Btn.innerText = gameContent.option2;
-    option2Btn.disabled = gameContent.option2 === '';
-    resetBtn.style.display = gameContent.reset ? 'block' : 'none';
-}
-
-function startGame() {
-    gameContent = {
-        heading: 'Escape Room Game',
-        text: 'You wake up in a dark, barley-lit room with no memory of who you are or how you got here. There are other people here with you who also have no memory. After talking with them, you learn that there is no way out. However, you notice a hall that leads away from the room. What do you do?',
-        option1: 'Explore the hall',
-        option2: 'Stay in the room',
-        reset: false
-    };
-    displayGameContent();
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === '1' && !document.getElementById('option1').disabled) {
-            exploreHall();
-        } else if (event.key === '2' && !document.getElementById('option2').disabled) {
-            stayInRoom();
-        }
-    });
-
-    document.getElementById('option1').addEventListener('click', exploreHall);
-    document.getElementById('option2').addEventListener('click', stayInRoom);
-    document.getElementById('reset-btn').addEventListener('click', startGame);
-}
-
-function exploreHall() {
-    gameContent = {
-        heading: 'Exploring the Hall',
-        text: 'You decide to explore the hall. It winds and turns, with many left and right options. After walking for what feels like an eternity, you find yourself back in the room where you started. What do you do now?',
-        option1: 'Explore the hall again',
-        option2: 'Try to find clues or a way to get out of the room other than the hall.',
-        reset: false
-    };
-    displayGameContent();
-
-    function exploreHallAgain() {
-
+    switch (attempts) {
+        case 2:
+            text = 'You explore the hall once again. It feels familiar, but you can\'t remember which turns you\'ve taken before. After walking for some time, you find yourself back in the room where you started. What do you do now?';
+            option1 = 'Explore the hall again';
+            option2 = 'Try to escape through the window';
+            option3 = 'Check the walls for any hidden clues';
+            option4 = 'Try to break down the door';
+            break;
+        case 3:
+            text = 'You explore the hall again, taking different turns this time. The twists and turns start to feel like a maze. Eventually, you find yourself back in the room where you started. What do you do now?';
+            option1 = 'Explore the hall again';
+            option2 = 'Try to escape through the window';
+            option3 = 'Examine the floor for any clues';
+            option4 = 'Try to break down the door';
+            break;
+        case 4:
+            text = 'You explore the hall once again, taking turns you haven\'t taken before. As you walk, you notice something on the ground. It\'s a key! You pick it up and continue down the hall. After some time, you find yourself back in the room where you started. What do you do now?';
+            option1 = 'Explore the hall again';
+            option2 = 'Try to escape through the door';
+            option3 = '';
+            option4 = '';
+            reset = true;
+            break;
+        default:
+            text = 'You explore the hall once again, taking different turns each time. After walking for what feels like an eternity, you find yourself back in the room where you started. What do you do now?';
+            option1 = 'Explore the hall again';
+            option2 = 'Try to escape through the window';
+            option3 = '';
+            option4 = '';
+            break;
     }
 
-    document.addEventListener('keydown', function(event) {
-        if (event.key === '1' && !document.getElementById('option1').disabled) {
-            exploreHallAgain();
-        } else if (event.key === '2' && !document.getElementById('option2').disabled) {
-            tryToEscape();
-        }
+    setOptions({
+        heading: 'Exploring the Hall',
+        text,
+        option1,
+        option2,
+        option3,
+        option4,
+        reset,
+        attempts
     });
-
-    document.getElementById('option1').addEventListener('click', exploreHallAgain);
-    document.getElementById('option2').addEventListener('click', tryToEscape);
 }
 
-function stayInRoom() {
-    gameContent = {
-        heading: 'Staying in the Room',
-        text: 'You decide to stay in the room and try to figure out how to escape. However, after searching the room thoroughly, you find no clues or items that could help you escape. What do you do now?',
-        option1: 'Explore the hall',
-        option2: 'Try to escape through the window',
-        reset: false
-    };
-    displayGameContent();
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === '1' && !document.getElementById('option1').disabled) {
-            exploreHall();
-        } else if (event.key === '2' && !document.getElementById('option2').disabled) {
-            tryToEscape();
-        }
-    });
-
-    document.getElementById('option1').addEventListener('click', exploreHall);
-    document.getElementById('option2').addEventListener('click', tryToEscape);
+function setOptions(param) {
+    
 }
+
+function tryToEscape() {
+    const attempts = gameContent.attempts ? gameContent.attempts + 1 : 1;
+    let text;
+    let option1;
+    let option2;
+    let option3;
+    let option4;
+    let reset = false;
+
+    switch (attempts) {
+        case 2:
+            text = 'You walk towards the window and try to open it. It won\'t budge. What do you do now?';
+            option1 = 'Try to open the window again';
+            option2 = 'Explore the hall';
+            option3 = 'Check the walls for any hidden clues';
+            option4 = 'Try to break down the door';
+            break;
+        case 3:
+            text = 'You try to open the window again, but it still won\'t budge. You start to feel frustrated. What do you do now?';
+            option1 = 'Try to open the window again';
+            option2 = 'Explore the hall';
+            option3 = 'Examine the floor for any clues';
+            option4 = 'Try to break down the door';
+            break;
+        case 2:
+            text = 'You walk towards the window and try to open it. It won\'t budge. What do you do now?';
+            option1 = 'Try to open the window again';
+            option2 = 'Explore the hall';
+            option3 = 'Check the walls for any hidden clues';
+            option4 = 'Try to break down the door';
+            break;
+        case 3:
+            text = 'You try to open the window again, but it still won\'t budge. You start to feel frustrated. What do you do now?';
+            option1 = 'Try to open the window again';
+            option2 = 'Explore the hall';
+            option3 = 'Examine the floor for any clues';
+            option4 = 'Try to break down the door';
+            break;
+        case 4:
+            text = 'You walk towards the door and try to open it. To your surprise, it opens easily. You rush out of the room and into the hallway. You\'re finally free!';
+            option1 = '';
+            option2 = '';
+            option3 = '';
+            option4 = '';
+            reset = true;
+            break;
+        default:
+            text = 'You walk towards the window and try to open it. It won\'t budge. What do you do now?';
+            option1 = 'Try to open the window again';
+            option2 = 'Explore the hall';
+            option3 = '';
+            option4 = '';
+            break;
+    }
+
+    setOptions({
+        heading: 'Trying to Escape',
+        text,
+        option1,
+        option2,
+        option3,
+        option4,
+        reset,
+        attempts
+    });
+}
+
+
+
+
+
 
