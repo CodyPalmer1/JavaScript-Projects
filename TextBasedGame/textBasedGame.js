@@ -539,6 +539,7 @@ function startAdventure() {
     let inventory = [];
 
     function updateDisplay() {
+        let scenes;
         const currentScene = scenes.find((scene) => scene.id === currentId);
 
         console.log(`HP: ${hp}`);
@@ -552,8 +553,10 @@ function startAdventure() {
     }
 
     function makeChoice(choice) {
+        let scenes;
         const currentScene = scenes.find((scene) => scene.id === currentId);
         const selectedOption = currentScene.options[choice - 1];
+        selectedOption.nextScene = undefined;
 
         console.log(selectedOption.outcome);
 
@@ -580,4 +583,4 @@ function startAdventure() {
 
 const play = startAdventure();
 
-play(2); // Example playthrough - choose second option on first scene
+play(2);
