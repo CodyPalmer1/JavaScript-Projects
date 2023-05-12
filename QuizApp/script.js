@@ -13,6 +13,16 @@ const questions = [
         question: "Who painted the Mona Lisa?",
         options: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
         answer: "Leonardo da Vinci"
+    },
+    {
+        question: "Which country won the 2018 FIFA World Cup?",
+        options: ["France", "Germany", "Brazil", "Argentina"],
+        answer: "France"
+    },
+    {
+        question: "What is the largest ocean on Earth?",
+        options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+        answer: "Pacific Ocean"
     }
 ];
 
