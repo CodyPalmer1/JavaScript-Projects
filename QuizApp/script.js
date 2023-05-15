@@ -23,6 +23,21 @@ const questions = [
         question: "What is the largest ocean on Earth?",
         options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
         answer: "Pacific Ocean"
+    },
+    {
+        question: "What is the largest country on Earth?",
+        options: ["USA", "Russia", "China", "Australia"],
+        answer: "Russia"
+    },
+    {
+        question: "What is the largest continent on Earth?",
+        options: ["North America", "Europe", "Asia", "Australia"],
+        answer: "Asia"
+    },
+    {
+        question: "Who holds the record for most yards passed in an NFL career?",
+        options: ["Tom Brady", "Peyton Manning", "Joe Montana", "Drew Brees"],
+        answer: "Tom Brady"
     }
 ];
 
