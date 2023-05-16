@@ -38,6 +38,21 @@ const questions = [
         question: "Who holds the record for most yards passed in an NFL career?",
         options: ["Tom Brady", "Peyton Manning", "Joe Montana", "Drew Brees"],
         answer: "Tom Brady"
+    },
+    {
+        question: "Who holds the record for most yards rushed for in an NFL career?",
+        options: ["Barry Sanders", "Adrian Peterson", "Emmit Smith", "Jim Brown"],
+        answer: "Emmit Smith"
+    },
+    {
+        question: "Who holds the record for most points scored in NBA history?",
+        options: ["LeBron James", "Michael Jordan", "Tom Brady", "Steph Curry"],
+        answer: "Lebron James"
+    },
+    {
+        question: "Which United States, State get the most percipitaion per year?",
+        options: ["Washington State", "Texas", "Florida", "Hawaii"],
+        answer: "Hawaii"
     }
 ];
 
