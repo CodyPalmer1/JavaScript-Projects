@@ -1,13 +1,19 @@
 function addTask() {
-    // Get the input field and the task list
     var inputField = document.getElementById("taskInput");
     var taskList = document.getElementById("taskList");
 
-    // Create a new list item and add it to the task list
-    var newTask = document.createElement("li");
-    newTask.innerHTML = inputField.value;
-    taskList.appendChild(newTask);
+    var taskText = inputField.value.trim();
 
-    // Clear the input field
-    inputField.value = "";
+    if (taskText !== '') {
+        var newTask = document.createElement("li");
+        newTask.innerHTML = '<span class="task-text">' + taskText + '</span><span class="delete-btn" onclick="deleteTask(this)">Delete</span>';
+        taskList.appendChild(newTask);
+
+        inputField.value = "";
+    }
+}
+
+function deleteTask(task) {
+    var taskItem = task.parentElement;
+    taskItem.remove();
 }
