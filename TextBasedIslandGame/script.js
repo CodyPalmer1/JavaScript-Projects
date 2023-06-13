@@ -4,6 +4,7 @@ var gameContainer = document.getElementById("game-container");
 
 var playerLocation = "beach";
 var hasKey = false;
+var hasBoat = false;
 
 function processUserInput() {
     var input = userInput.value.toLowerCase().trim();
@@ -13,7 +14,13 @@ function processUserInput() {
     switch (playerLocation) {
         case "beach":
             if (input === "explore") {
-                outputText = "You find a boat. Do you want to go to the island?";
+                outputText = "You find a boat. Do you want to take it?";
+            } else if (input === "take boat" && !hasBoat) {
+                outputText = "You take the boat.";
+                hasBoat = true;
+            } else if (input === "go to island" && hasBoat) {
+                outputText = "You sail to the island.";
+                playerLocation = "island";
             } else {
                 outputText = "You can explore the area.";
             }
@@ -26,7 +33,7 @@ function processUserInput() {
                     outputText = "You see a locked door. It seems to require a key.";
                 }
             } else if (input === "go back") {
-                outputText = "You return to the beach.";
+                outputText = "You sail back to the beach.";
                 playerLocation = "beach";
             } else {
                 outputText = "You can explore the island or go back.";
